@@ -30,10 +30,6 @@ class _MyHomePageState extends State<MyHomePage> {
   final int width = 320;
   final int height = 240;
 
-  Future<List<Widget>> getlistOfRandomNetworkImages() async {
-    return await loadImages();
-  }
-
   List<Widget> loadImages() {
     List<Widget> randomImages = List();
 
