@@ -46,12 +46,13 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Container(
           margin: const EdgeInsets.all(8),
           child: ListView.builder(
-              itemCount: _imageUrlList.length,
-              itemBuilder: (_, index) {
-                return PhotoItem(
-                  imageUrl: _imageUrlList[index],
-                );
-              }),
+            itemCount: _imageUrlList.length,
+            itemBuilder: (_, index) {
+              return PhotoItem(
+                imageUrl: _imageUrlList[index],
+              );
+            },
+          ),
         ),
       ),
     );
