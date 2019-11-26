@@ -3,67 +3,31 @@ import 'package:flutter/material.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
+  final List<String> _items = List<String>.generate(
+      10000, (i) => 'https://loremflickr.com/4096/3072?random=$i');
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  final String title;
-
-  MyHomePage({Key key, this.title}) : super(key: key);
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  final int countImages = 1000;
-  final int width = 4096;
-  final int height = 3072;
-  List<String> _imageUrlList = [];
-
-  @override
-  void initState() {
-    setState(() => _imageUrlList = _buildImageUrlList());
-    super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: SafeArea(
-        child: Container(
-          margin: const EdgeInsets.all(8),
-          child: ListView.builder(
-            itemCount: _imageUrlList.length,
-            itemBuilder: (_, index) {
-              return PhotoItem(
-                imageUrl: _imageUrlList[index],
-              );
-            },
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Flutter Demo'),
+        ),
+        body: SafeArea(
+          child: Container(
+            margin: const EdgeInsets.all(8),
+            child: ListView.builder(
+              itemCount: _items.length,
+              itemBuilder: (_, index) {
+                return PhotoItem(
+                  imageUrl: _items[index],
+                );
+              },
+            ),
           ),
         ),
       ),
     );
-  }
-
-  List<String> _buildImageUrlList() {
-    List<String> _imageUrlList = [];
-    for (var i = 0; i < countImages; i++) {
-      _imageUrlList.add('https://loremflickr.com/$width/$height?random=$i');
-    }
-    return _imageUrlList;
   }
 }
 
