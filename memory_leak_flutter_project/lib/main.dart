@@ -46,6 +46,8 @@ class PhotoItem extends StatelessWidget {
       child: Image.network(
         imageUrl,
         fit: BoxFit.cover,
+        cacheWidth: 600,
+        cacheHeight: 600,
       ),
     );
   }
